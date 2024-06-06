@@ -86,6 +86,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) {
+		return size;
 	}
 	
 	//returns item at parameter's index
@@ -94,15 +95,27 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//checks if there is a list
 	public boolean isEmpty() {
+		return false;
 	}
 
 	//return the size of the list
 	public int size() {
+		return size;
 	}
 	
 	//Take each element of the list a writes them to a string 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+        NodeGeneric<T> current = head;
+        while (current != null) {
+            sb.append(current.get());
+            if (current.next != null) {
+                sb.append(" ");
+            }
+            current = current.next;
+        }
+        return sb.toString();
 	}
 
 	//add the parameter item at of the end of the list
