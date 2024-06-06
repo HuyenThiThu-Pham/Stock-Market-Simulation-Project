@@ -10,10 +10,12 @@ public class Trade implements Comparable<Trade> {
 	private long created;
 
 	/**
+	 * @return 
 	 * @return Track the moment in time this Trade was created
 	 */
-	public void getCreated()
+	public long getCreated()
 	{
+		return created;
 	}
 	
 	public String listedCompanyCode;
@@ -29,15 +31,18 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The quantity of shares to trade
 	 */
-	public void getShareQuantity() {
+	public int getShareQuantity() {
+		return shareQuantity;
 	}
 
 	private StockBroker broker;
 
 	/**
+	 * @return 
 	 * @return The broker associated with this trade
 	 */
-	public void getStockBroker() {
+	public StockBroker getStockBroker() {
+		return broker;
 	}
 
 
