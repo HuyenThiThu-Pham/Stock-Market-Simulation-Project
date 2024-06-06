@@ -162,7 +162,34 @@ public class DSEList implements List {
 
 	//removes the parameter's String form the list
 	public boolean remove(String obj) {
-		return false;
+		
+		Node current = head; // Start at the head of the list.
+		while (current != null) { // While there are nodes to check...
+			if (current.getString().equals(obj)) {
+	            if (current == head) { // removing head
+	                head = head.next;
+	                if (head != null) {
+	                    head.prev = null;
+	                } else {
+	                    tail = null; // The list is now empty
+	                }
+	            } else if (current == tail) { //removing tail
+	                tail = tail.prev;
+	                if (tail != null) {
+	                    tail.next = null;
+	                } else {
+	                    head = null; // The list is now empty
+	                }
+	            } else {
+	                current.prev.next = current.next;
+	                current.next.prev = current.prev;
+	            }
+	            return true; // Return true after the node is removed
+	        }
+	        current = current.next;
+		}
+		return false; // Return false if the object was not found
+		
 	}
 	
 	@Override
