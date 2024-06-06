@@ -6,19 +6,24 @@ import unisa.dse.a2.interfaces.ListGeneric;
  * @author simont
  *
  */
-public class DSEListGeneric implements ListGeneric {
+public class DSEListGeneric<T> implements ListGeneric {
 	
-	public NodeGeneric head;
-	private NodeGeneric tail;
+	public NodeGeneric<T> head; // Reference to the first node in the list
+	private NodeGeneric<T> tail;// Reference to the last node in the list
+	private int size; // Size of the list
 
+	//Blank constructor
 	public DSEListGeneric() {
+		this.head = null;
+        this.tail = null;
+        this.size = 0;
 		
 	}
-	public DSEListGeneric(NodeGeneric head_) {
+	public DSEListGeneric(NodeGeneric<T> head_) {
 	}
 	
 	//Takes a list then adds each element into a new list
-	public DSEListGeneric(DSEList other) { // Copy constructor. 
+	public DSEListGenericDSEList other) { // Copy constructor. 
 	}
 
 	//remove and return the item at the parameter's index
