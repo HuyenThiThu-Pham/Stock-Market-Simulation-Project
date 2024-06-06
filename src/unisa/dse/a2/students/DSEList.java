@@ -115,23 +115,33 @@ public class DSEList implements List {
 
 	//add the parameter String at of the end of the list
 	public boolean add(String obj) {
+		return false;
 	}
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
+		return false;
 	}
 
 	//searches list for parameter's String return true if found
 	public boolean contains(String obj) {
+		return false;
 	}
 
 	//removes the parameter's String form the list
 	public boolean remove(String obj) {
+		return false;
 	}
 	
 	@Override
 	public int hashCode() {
-		return 0;
+		int hash = 0;
+        Node current = head;
+        while (current != null) {
+            hash += current.getString().hashCode();
+            current = current.next;
+        }
+        return hash;
 	}
 
 	@Override
