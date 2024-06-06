@@ -120,7 +120,11 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//add the parameter item at of the end of the list
 	public boolean add(T obj) {
+		if (obj == null) { // Check for null.
+            throw new NullPointerException();
+        }
 		
+        // Create a new node.
 		NodeGeneric<T> newNode = new NodeGeneric<>(null, null, obj);
         if (head == null) {
             head = newNode;
@@ -136,7 +140,14 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//add item at parameter's index
 	public boolean add(int index, T obj) {
-		
+		if (obj == null) { // Check for null.
+            throw new NullPointerException();
+        }
+        if (index < 0 || index > size) { // Check for out of bounds.
+            throw new IndexOutOfBoundsException();
+        }
+        
+        // Create a new node.
 		NodeGeneric<T> newNode = new NodeGeneric<>(null, null, obj);
         if (index == 0) { // Add to the front.
             newNode.next = head;
