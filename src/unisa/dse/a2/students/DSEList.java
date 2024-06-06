@@ -142,6 +142,12 @@ public class DSEList implements List {
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
+		if (obj == null) { // Check for null.
+			throw new NullPointerException();
+		}
+		if (index < 0 || index > size()) { // Check for out of bounds.
+			throw new IndexOutOfBoundsException(index);
+		}
 		
 		Node newNode = new Node(null,null,obj);
 		if (index == 0) { // Add to the front.
