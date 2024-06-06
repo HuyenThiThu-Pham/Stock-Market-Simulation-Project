@@ -241,7 +241,13 @@ public class DSEListGeneric<T> implements ListGeneric {
 	
 	@Override
 	public int hashCode() {
-		return 0;
+		int hash = 0;
+        NodeGeneric<T> current = head;
+        while (current != null) {
+            hash += current.get().hashCode();
+            current = current.next;
+        }
+        return hash;
 	}
 
 	@Override
