@@ -205,6 +205,38 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//removes the parameter's item form the list
 	public boolean remove(Object obj) {
+		
+		if (obj == null) { // Check for null
+            throw new NullPointerException();
+        }
+		
+		NodeGeneric<T> current = head; // Start at the head of the list.
+        while (current != null) { // While there are nodes to check...
+            if (current.get().equals(obj)) {
+                if (current == head) {
+                    head = head.next;
+                    if (head != null) {
+                        head.prev = null;
+                    } else {
+                        tail = null; // The list is now empty
+                    }
+                } else if (current == tail) {
+                    tail = tail.prev;
+                    if (tail != null) {
+                        tail.next = null;
+                    } else {
+                        head = null; // The list is now empty
+                    }
+                } else {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
+                size--; // Decrease the size of the list
+                return true; // Return true after the node is removed
+            }
+            current = current.next;
+        }
+        return false; // Return false if the object was not found
 	}
 	
 	@Override
