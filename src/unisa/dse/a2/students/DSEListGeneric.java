@@ -19,7 +19,12 @@ public class DSEListGeneric<T> implements ListGeneric {
         this.size = 0;
 		
 	}
+	
+	// Constructor accepting one Node, setting head and tail to the same Node
 	public DSEListGeneric(NodeGeneric<T> head_) {
+		this.head = head;
+        this.tail = head;
+        this.size = calculateSize();
 	}
 	
 	//Takes a list then adds each element into a new list
