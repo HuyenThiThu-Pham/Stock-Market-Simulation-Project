@@ -85,19 +85,32 @@ public class DSEList implements List {
 	
 	//returns String at parameter's index
 	public String get(int index) {
+		return null;
 	}
 
 	//checks if there is a list
 	public boolean isEmpty() {
+		return false;
 	}
 
 	//return the size of the list
 	public int size() {
+		return 0;
 	}
 	
 	//Take each element of the list a writes them to a string 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+        	sb.append(current.getString());
+            if (current.next != null) {
+                sb.append(" ");
+            }
+            current = current.next;
+        }
+        return sb.toString();
 	}
 
 	//add the parameter String at of the end of the list
