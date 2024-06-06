@@ -95,7 +95,13 @@ public class DSEList implements List {
 
 	//return the size of the list
 	public int size() {
-		return 0;
+		int size = 0;
+        Node current = head;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
 	}
 	
 	//Take each element of the list a writes them to a string 
