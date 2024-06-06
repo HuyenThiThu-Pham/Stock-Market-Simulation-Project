@@ -12,9 +12,13 @@ public class DSEList implements List {
 	private Node tail;
 
 	public DSEList() {
+		this.head = null;
+		this.tail = null;
 		
 	}
 	public DSEList(Node head_) {
+		this.head = head;
+		this.tail = head;
 	}
 	
 	//Takes a list then adds each element into a new list
