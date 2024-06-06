@@ -29,8 +29,12 @@ public class ListedCompany {
 		return currentPrice;
 	}
 	
+	//Constructor
 	public ListedCompany(String code, String name, int currentPrice)
 	{
+		this.code = code;
+		this.name = name;
+		this.currentPrice = currentPrice;
 	}
 	
 	/**
