@@ -20,7 +20,7 @@ public class StockBroker {
 	 * @return
 	 */
 	public DSEListGeneric<String> getWatchlist() {
-		return new DSEListGeneric<String>(watchList);
+		return new DSEListGeneric<>(watchList);
 	}
 	
 	/**
@@ -39,6 +39,8 @@ public class StockBroker {
 	 * @return
 	 */
 	public String getName() {
+		return name;
+		
 	}
 	
 	/**
@@ -47,6 +49,7 @@ public class StockBroker {
 	 */
 	public StockBroker(String name)
 	{
+		this.name = name;
 	}
 	
 	/**
@@ -64,6 +67,7 @@ public class StockBroker {
 	 */
 	public Trade getNextTrade()
 	{
+		return pendingTrades.poll();
 	}
 	
 	/**
@@ -71,6 +75,7 @@ public class StockBroker {
 	 */
 	public int getPendingTradeCount()
 	{
+		return pendingTrades.size();
 	}
 
 	/**
