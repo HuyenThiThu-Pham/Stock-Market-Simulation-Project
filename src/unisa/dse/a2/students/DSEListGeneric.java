@@ -50,6 +50,15 @@ public class DSEListGeneric<T> implements ListGeneric {
         }
 	}
 
+	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
 	//remove and return the item at the parameter's index
 	public T remove(int index) {
 		if (index < 0 || index >= size) {
