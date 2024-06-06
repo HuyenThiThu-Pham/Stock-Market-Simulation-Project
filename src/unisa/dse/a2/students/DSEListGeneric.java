@@ -28,6 +28,16 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 	
 	//Takes a list then adds each element into a new list
+	private int calculateSize() {
+		int count = 0;
+        NodeGeneric<T> current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+	}
+
 	public DSEListGenericDSEList other) { // Copy constructor. 
 	}
 
