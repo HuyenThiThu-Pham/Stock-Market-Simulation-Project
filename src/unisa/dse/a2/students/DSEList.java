@@ -125,6 +125,16 @@ public class DSEList implements List {
 
 	//searches list for parameter's String return true if found
 	public boolean contains(String obj) {
+		if (obj == null) { // Check for null to avoid NullPointerException
+	        throw new NullPointerException("The search object cannot be null");
+	    }
+		Node current = head; // Start at the head of the list.
+		while (current != null) { // While there are nodes to check...
+			if (obj.equals(current.getString())) { 
+	            return true;
+	        }
+	        current = current.next;
+	    }
 		return false;
 	}
 
