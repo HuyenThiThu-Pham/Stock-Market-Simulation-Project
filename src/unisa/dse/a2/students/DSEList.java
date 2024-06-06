@@ -35,6 +35,17 @@ public class DSEList implements List {
 
 	//remove the String at the parameter's index
 	public String remove(int index) {
+		if (index < 0 || index >= size()) {  // Check for out of bounds
+			throw new IndexOutOfBoundsException(index); 
+		}
+		Node current = head;
+		for (int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		
+		String toReturn = current.getString();
+		return toReturn;
+		
 
 	}
 
