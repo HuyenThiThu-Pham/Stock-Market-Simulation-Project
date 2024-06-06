@@ -1,12 +1,14 @@
 package unisa.dse.a2.students;
 
+import java.util.Iterator;
+
 import unisa.dse.a2.interfaces.ListGeneric;
 
 /**
  * @author simont
  *
  */
-public class DSEListGeneric<T> implements ListGeneric {
+public class DSEListGeneric<T> implements ListGeneric<T> {
 	
 	public NodeGeneric<T> head; // Reference to the first node in the list
 	private NodeGeneric<T> tail;// Reference to the last node in the list
@@ -282,5 +284,30 @@ public class DSEListGeneric<T> implements ListGeneric {
         }
         return true;
 	}
+	
+	// Implement iterator to provide iteration capability over the list
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private NodeGeneric<T> current = head; // Start with the head of the list
+
+            // Check if there is a next element in the list
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            // Return the next element in the list and move the pointer forward
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new java.util.NoSuchElementException();
+                }
+                T data = current.get();
+                current = current.next;
+                return data;
+            }
+        };
+    }
 	
 }
