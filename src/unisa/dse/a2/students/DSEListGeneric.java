@@ -90,7 +90,13 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 	
 	//returns item at parameter's index
-	public void get(int index) {
+	public T get(int index) {
+		
+		NodeGeneric<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.get();
 	}
 
 	//checks if there is a list
