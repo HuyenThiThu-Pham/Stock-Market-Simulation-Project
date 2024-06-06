@@ -44,6 +44,26 @@ public class DSEList implements List {
 		}
 		
 		String toReturn = current.getString();
+		
+		if (current == head) {
+			head = head.next;
+			if (head != null) {
+	            head.prev = null;
+	        } else {
+	            tail = null; // The list is now empty
+	        }
+	    } else if (current == tail) {
+	        tail = tail.prev;
+	        if (tail != null) {
+	            tail.next = null;
+	        } else {
+	            head = null; // The list is now empty
+	        }
+	    } else {
+	        current.prev.next = current.next;
+	        current.next.prev = current.prev;
+	    }
+		
 		return toReturn;
 		
 
