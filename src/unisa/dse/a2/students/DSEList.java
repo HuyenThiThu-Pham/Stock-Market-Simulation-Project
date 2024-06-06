@@ -50,14 +50,14 @@ public class DSEList implements List {
 			if (head != null) {
 	            head.prev = null;
 	        } else {
-	            tail = null; // The list is now empty
+	            tail = null; 
 	        }
 	    } else if (current == tail) {
 	        tail = tail.prev;
 	        if (tail != null) {
 	            tail.next = null;
 	        } else {
-	            head = null; // The list is now empty
+	            head = null; 
 	        }
 	    } else {
 	        current.prev.next = current.next;
@@ -71,6 +71,16 @@ public class DSEList implements List {
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) {
+		Node current = head;
+		int index = 0;
+		while (current != null) {
+			if (current.getString().equals(obj)) {
+				return index;
+			}
+			current = current.next;
+			index++;
+		}
+		return -1;
 	}
 	
 	//returns String at parameter's index
