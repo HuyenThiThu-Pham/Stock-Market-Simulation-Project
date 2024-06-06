@@ -49,6 +49,7 @@ public class Trade implements Comparable<Trade> {
 		created = System.nanoTime(); //do not change this
 		tradeId = id; //do not change this
 		try { Thread.sleep(100); } catch (Exception x) {}
+		
 	}
 	
 	/***
@@ -81,6 +82,21 @@ public class Trade implements Comparable<Trade> {
 	 */
 	public int compareTo(Trade t)
 	{
+		// Check if both trades are on their broker's watchlists
+        boolean thisInWatchlist = this.broker.getWatchlist().contains(this.listedCompanyCode);
+        boolean otherInWatchlist = t.getStockBroker().getWatchlist().contains(t.getCompanyCode());
+
+        if (thisInWatchlist && otherInWatchlist) {
+            return 0; // Both trades are in the watchlists
+        } else if (thisInWatchlist) {
+            return 1; // Only this trade is in the watchlist
+        } else if (otherInWatchlist) {
+            return -1; // Only the other trade is in the watchlist
+        } else {
+            // Neither trade is in the watchlists, compare by creation time
+            return Long.compare(this.created, t.getCreated());
+            
+        }
 	}
 	
 
