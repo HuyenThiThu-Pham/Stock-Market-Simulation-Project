@@ -38,7 +38,16 @@ public class DSEListGeneric<T> implements ListGeneric {
         return count;
 	}
 
-	public DSEListGenericDSEList other) { // Copy constructor. 
+	// Constructor accepting a DSEListGeneric
+	public DSEListGeneric(DSEListGeneric<T> other){ // Copy constructor. 
+		this(); // Call the blank constructor to initialize
+        if (other.head != null) {
+            NodeGeneric<T> current = other.head;
+            while (current != null) {
+                add(current.get());
+                current = current.next;
+            }
+        }
 	}
 
 	//remove and return the item at the parameter's index
