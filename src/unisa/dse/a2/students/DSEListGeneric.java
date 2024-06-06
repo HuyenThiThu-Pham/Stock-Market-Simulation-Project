@@ -91,6 +91,9 @@ public class DSEListGeneric<T> implements ListGeneric {
 	
 	//returns item at parameter's index
 	public T get(int index) {
+		if (index < 0 || index >= size) { // Check for out of bounds
+            return null;
+        }
 		
 		NodeGeneric<T> current = head;
         for (int i = 0; i < index; i++) {
@@ -101,7 +104,7 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//checks if there is a list
 	public boolean isEmpty() {
-		return false;
+		 return head == null;
 	}
 
 	//return the size of the list
