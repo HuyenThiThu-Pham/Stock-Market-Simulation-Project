@@ -122,6 +122,10 @@ public class DSEList implements List {
 	//add the parameter String at of the end of the list
 	public boolean add(String obj) {
 		
+		if (obj == null) { // Check for null.
+			throw new NullPointerException();
+		}
+		// Create a new node.
 		Node newNode = new Node(null,null,obj);
 		if (head == null) {
 			head = newNode;
