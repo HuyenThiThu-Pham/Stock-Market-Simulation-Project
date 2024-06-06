@@ -163,6 +163,10 @@ public class DSEList implements List {
 	//removes the parameter's String form the list
 	public boolean remove(String obj) {
 		
+		if (obj == null) { // Check for null
+	        throw new NullPointerException();
+	    }
+		
 		Node current = head; // Start at the head of the list.
 		while (current != null) { // While there are nodes to check...
 			if (current.getString().equals(obj)) {
