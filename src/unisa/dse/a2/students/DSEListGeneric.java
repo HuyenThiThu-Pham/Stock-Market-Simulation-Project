@@ -52,6 +52,9 @@ public class DSEListGeneric<T> implements ListGeneric {
 
 	//remove and return the item at the parameter's index
 	public T remove(int index) {
+		if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(index);
+        }
 		
 		NodeGeneric<T> current = head;
         for (int i = 0; i < index; i++) {
