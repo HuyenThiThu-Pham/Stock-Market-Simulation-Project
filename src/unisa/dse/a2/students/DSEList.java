@@ -142,7 +142,37 @@ public class DSEList implements List {
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
-		return false;
+		
+		Node newNode = new Node(null,null,obj);
+		if (index == 0) { // Add to the front.
+			// Make next of new node as head and previous as NULL
+			newNode.next = head;
+			newNode.prev = null;
+			//change previous of head node to new node
+		    if (head != null) {
+		        head.prev = newNode;
+		    }
+		    //move the head to point to the new node.
+		    head = newNode;
+		    if (tail == null) { // If the list was empty, set tail to the new node
+		        tail = newNode;
+		    }
+		} else {
+			Node current = head;
+			for (int i = 0; i < index - 1; i++) {
+				current = current.next;
+			}
+			newNode.next = current.next;
+			if (current.next != null) {
+	            current.next.prev = newNode;
+	        } else {
+	            tail = newNode; // If inserting at the end, update the tail
+	        }
+	        newNode.prev = current;
+	        current.next = newNode;
+			}
+			return true;
+		
 	}
 
 	//searches list for parameter's String return true if found
