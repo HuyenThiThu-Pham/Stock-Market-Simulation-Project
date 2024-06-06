@@ -220,6 +220,16 @@ public class DSEList implements List {
         if (size() != otherList.size()) {
             return false;
         }
+        
+        Node current = head;
+        Node otherCurrent = otherList.head;
+        while (current != null) {
+            if (!current.getString().equals(otherCurrent.getString())) {
+                return false;
+            }
+            current = current.next;
+            otherCurrent = otherCurrent.next;
+        }
 		return true;
 	}
 	
