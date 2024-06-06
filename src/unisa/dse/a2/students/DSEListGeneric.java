@@ -51,7 +51,36 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//remove and return the item at the parameter's index
-	public void remove(int index) {
+	public T remove(int index) {
+		
+		NodeGeneric<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        T toReturn = current.get();
+
+        if (current == head) {
+            head = head.next;
+            if (head != null) {
+                head.prev = null;
+            } else {
+                tail = null; // The list is now empty
+            }
+        } else if (current == tail) {
+            tail = tail.prev;
+            if (tail != null) {
+                tail.next = null;
+            } else {
+                head = null; // The list is now empty
+            }
+        } else {
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+
+        size--; // Decrease the size of the list
+        return toReturn;
 
 	}
 
