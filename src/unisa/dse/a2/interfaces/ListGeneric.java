@@ -1,5 +1,7 @@
 package unisa.dse.a2.interfaces;
 
+import java.util.Iterator;
+
 /**
  * @author simont
  *
@@ -114,4 +116,6 @@ public interface ListGeneric<T> {
 	 */
 	@Override
 	public int hashCode();
+	
+	Iterator<T> iterator();
 }
