@@ -135,7 +135,34 @@ public class DSEListGeneric<T> implements ListGeneric {
 	}
 
 	//add item at parameter's index
-	public boolean add(int index, Object obj) {
+	public boolean add(int index, T obj) {
+		
+		NodeGeneric<T> newNode = new NodeGeneric<>(null, null, obj);
+        if (index == 0) { // Add to the front.
+            newNode.next = head;
+            if (head != null) {
+                head.prev = newNode;
+            }
+            head = newNode;
+            if (tail == null) { // If the list was empty, set tail to the new node
+                tail = newNode;
+            }
+        } else {
+            NodeGeneric<T> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            if (current.next != null) {
+                current.next.prev = newNode;
+            } else {
+                tail = newNode; // If inserting at the end, update the tail
+            }
+            newNode.prev = current;
+            current.next = newNode;
+        }
+        size++; // Increase the size of the list
+        return true;
 	}
 
 	//searches list for parameter's String return true if found
