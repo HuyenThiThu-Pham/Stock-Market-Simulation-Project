@@ -126,11 +126,13 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	}
 
 	//checks if there is a list
+	@Override
 	public boolean isEmpty() {
 		 return head == null;
 	}
 
 	//return the size of the list
+	@Override
 	public int size() {
 		return size;
 	}
@@ -151,6 +153,7 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	}
 
 	//add the parameter item at of the end of the list
+	@Override
 	public boolean add(T obj) {
 		if (obj == null) { // Check for null.
             throw new NullPointerException();
