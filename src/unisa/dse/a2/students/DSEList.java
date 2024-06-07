@@ -10,17 +10,29 @@ public class DSEList implements List {
 	
 	public Node head;
 	private Node tail;
+	private int size;
 
 	public DSEList() {
 		this.head = null;
 		this.tail = null;
+		this.size = 0; 
 		
 	}
-	public DSEList(Node head_) {
+	public DSEList(Node head) {
 		this.head = head;
 		this.tail = head;
+		this.size = calculateSize();
 	}
 	
+	private int calculateSize() {
+		int count = 0;
+        Node current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+	}
 	//Takes a list then adds each element into a new list
 	public DSEList(DSEList other) { // Copy constructor. 
 		this();
@@ -63,7 +75,7 @@ public class DSEList implements List {
 	        current.prev.next = current.next;
 	        current.next.prev = current.prev;
 	    }
-		
+		size --; // Decrease the size
 		return toReturn;
 		
 
@@ -71,6 +83,9 @@ public class DSEList implements List {
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) {
+		if (obj == null) {
+            throw new NullPointerException("The search object cannot be null");
+        }
 		Node current = head;
 		int index = 0;
 		while (current != null) {
@@ -146,6 +161,7 @@ public class DSEList implements List {
 			newNode.prev = tail;
 			tail = newNode;
 		}
+		size ++; //Increase the size
 		return true;
 	}
 		
