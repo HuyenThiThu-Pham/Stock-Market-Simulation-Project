@@ -115,7 +115,7 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	//returns item at parameter's index
 	public T get(int index) {
 		if (index < 0 || index >= size) { // Check for out of bounds
-			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+			return null;
         }
 		
 		NodeGeneric<T> current = head;
