@@ -104,6 +104,7 @@ public class DSEList implements List {
 	}
 
 	//return the size of the list
+	@Override
 	public int size() {
 		int size = 0;
         Node current = head;
