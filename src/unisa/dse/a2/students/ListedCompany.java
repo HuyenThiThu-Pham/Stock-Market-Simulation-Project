@@ -54,4 +54,9 @@ public class ListedCompany {
 		}
 		return currentPrice;
 	}
+
+	public void setCurrentPrice(int newPrice) {
+	
+		this.currentPrice = newPrice;
+	}
 }
