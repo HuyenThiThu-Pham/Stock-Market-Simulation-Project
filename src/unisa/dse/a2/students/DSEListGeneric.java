@@ -22,7 +22,7 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
     }
 	
 	// Constructor accepting one Node, setting head and tail to the same Node
-	public DSEListGeneric(NodeGeneric<T> head_) {
+	public DSEListGeneric(NodeGeneric<T> head) {
 		this.head = head;
         this.tail = head;
         this.size = calculateSize();
@@ -64,7 +64,7 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	public T remove(int index) {
 		//Bound check
 		if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(index);
+            throw new IndexOutOfBoundsException(" Index:" + index + ",Size:" + size);
         }
 		
 		NodeGeneric<T> current = head; // traversing the list from the beginning.
@@ -115,7 +115,7 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 	//returns item at parameter's index
 	public T get(int index) {
 		if (index < 0 || index >= size) { // Check for out of bounds
-            return null;
+			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
 		
 		NodeGeneric<T> current = head;
