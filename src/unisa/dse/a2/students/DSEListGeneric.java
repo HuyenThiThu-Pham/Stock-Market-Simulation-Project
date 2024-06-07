@@ -62,30 +62,31 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 
 	//remove and return the item at the parameter's index
 	public T remove(int index) {
+		//Bound check
 		if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(index);
         }
 		
-		NodeGeneric<T> current = head;
+		NodeGeneric<T> current = head; // traversing the list from the beginning.
         for (int i = 0; i < index; i++) {
-            current = current.next;
+            current = current.next; //update the current pointer to the next node of the list
         }
 
-        T toReturn = current.get();
+        T toReturn = current.get(); 
 
-        if (current == head) {
+        if (current == head) { //removed node is the head of the list
             head = head.next;
             if (head != null) {
                 head.prev = null;
             } else {
-                tail = null; // The list is now empty
+                tail = null; 
             }
-        } else if (current == tail) {
+        } else if (current == tail) { //removed node is the tail of the list
             tail = tail.prev;
             if (tail != null) {
                 tail.next = null;
             } else {
-                head = null; // The list is now empty
+                head = null; 
             }
         } else {
             current.prev.next = current.next;
@@ -97,9 +98,18 @@ public class DSEListGeneric<T> implements ListGeneric<T> {
 
 	}
 
-	//returns the index of the String parameter 
-	public int indexOf(String obj) {
-		return size;
+	// Returns the index of the parameter, or -1 if not found
+	public int indexOf(T obj) {
+		NodeGeneric<T> current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.get().equals(obj)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
 	}
 	
 	//returns item at parameter's index
