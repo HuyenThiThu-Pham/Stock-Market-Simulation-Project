@@ -1,6 +1,8 @@
 package unisa.dse.a2.students;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import unisa.dse.a2.interfaces.ListGeneric;
@@ -88,6 +90,21 @@ public class SecuritiesExchange {
 	 */
 	public int processTradeRound()
 	{
+		int successfulTrades = 0; // Initialize the count of successful trades
+		   
+	    List<Trade> tradesToProcess = new ArrayList<>();  // List to store trades to be processed
+
+	    //Processing each Broker's trades
+	    
+	    for (StockBroker broker : brokers) { 
+	       
+	        Trade trade = broker.getNextTrade();  // Get the next trade from the broker's queue	  
+	       
+	        
+	        if (trade != null) {  
+	        	tradesToProcess.add(trade); // Add the trade to the list if it's not null
+	        }
+	    }
 	}
 	
 	public int runCommandLineExchange(Scanner sc)
