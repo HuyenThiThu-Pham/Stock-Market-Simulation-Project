@@ -6,7 +6,7 @@ import java.util.Iterator;
  * @author simont
  *
  */
-public interface ListGeneric<T> {
+public interface ListGeneric<T> extends Iterable<T>{
 	
 	/**
 	 * Inserts the specified element at the specified position in this list. 
