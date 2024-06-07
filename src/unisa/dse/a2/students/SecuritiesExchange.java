@@ -105,6 +105,27 @@ public class SecuritiesExchange {
 	        	tradesToProcess.add(trade); // Add the trade to the list if it's not null
 	        }
 	    }
+	 // Process each collected trade
+	    for (Trade trade : tradesToProcess) {
+	    	ListedCompany company = companies.get(companyCode);  // Get the ListedCompany object from the map	            
+            int quantity = trade.getShareQuantity(); // Get the quantity of shares to be traded           
+            int currentPrice = company.getCurrentPrice(); // Get the current price of the company's shares
+            StockBroker broker = trade.getStockBroker(); // Get the broker who placed the trade
+
+            // Create the announcement string for the trade
+            String announcement = "Trade: " + quantity + " " + companyCode + " @ " + currentPrice + " via " + broker.getName();	            
+            announcements.add(announcement); // Add the announcement to the announcements list	          
+            successfulTrades++;  // Increment the count of successful trades
+            
+            
+            // Process the trade and update the company's current price
+            company.setCurrentPrice(company.getCurrentPrice() + quantity / 100);
+            if (company.getCurrentPrice() < 1) {
+                company.setCurrentPrice(1); // Ensure the price does not go below 1
+            }
+	    }
+	 // Return the total number of successful trades
+	    return successfulTrades; 
 	}
 	
 	public int runCommandLineExchange(Scanner sc)
