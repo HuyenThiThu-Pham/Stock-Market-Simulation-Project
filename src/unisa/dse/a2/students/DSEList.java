@@ -98,8 +98,9 @@ public class DSEList implements List {
 	}
 
 	//checks if there is a list
+	@Override
 	public boolean isEmpty() {
-		return false;
+		return head == null;
 	}
 
 	//return the size of the list
