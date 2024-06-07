@@ -105,8 +105,13 @@ public class SecuritiesExchange {
 	        	tradesToProcess.add(trade); // Add the trade to the list if it's not null
 	        }
 	    }
-	 // Process each collected trade
+	    
+	    // Process each collected trade
 	    for (Trade trade : tradesToProcess) {
+	    	// Get the company code associated with the trade
+            String companyCode = trade.getCompanyCode();
+            
+            
 	    	ListedCompany company = companies.get(companyCode);  // Get the ListedCompany object from the map	            
             int quantity = trade.getShareQuantity(); // Get the quantity of shares to be traded           
             int currentPrice = company.getCurrentPrice(); // Get the current price of the company's shares
