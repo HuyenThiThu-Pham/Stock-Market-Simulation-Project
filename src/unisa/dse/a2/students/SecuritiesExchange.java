@@ -112,6 +112,13 @@ public class SecuritiesExchange {
             String companyCode = trade.getCompanyCode();
             
             
+            // Check if the company code exists in the companies map
+            if (!companies.containsKey(companyCode)) {
+                // If the company is not listed, throw an exception
+                throw new UntradedCompanyException(companyCode);
+            }
+            
+            
 	    	ListedCompany company = companies.get(companyCode);  // Get the ListedCompany object from the map	            
             int quantity = trade.getShareQuantity(); // Get the quantity of shares to be traded           
             int currentPrice = company.getCurrentPrice(); // Get the current price of the company's shares
