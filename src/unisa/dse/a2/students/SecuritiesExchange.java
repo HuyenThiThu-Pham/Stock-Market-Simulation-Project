@@ -50,6 +50,11 @@ public class SecuritiesExchange {
 	 */
 	public boolean addCompany(ListedCompany company)
 	{
+		if (company != null && !companies.containsKey(company.getCode())) {
+	        companies.put(company.getCode(), company);
+	        return true;
+	    }
+	    return false;
 	}
 
 	/**
@@ -82,6 +87,6 @@ public class SecuritiesExchange {
 	
 	public int runCommandLineExchange(Scanner sc)
 	{
-		
+		return 0;
 	}
 }
