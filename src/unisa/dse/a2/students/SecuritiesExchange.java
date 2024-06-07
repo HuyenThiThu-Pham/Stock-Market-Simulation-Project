@@ -106,6 +106,11 @@ public class SecuritiesExchange {
 	        }
 	    }
 	    
+	    // If there are no trades to process, return 0
+	    if (tradesToProcess.isEmpty()) {
+	        return 0;
+	    }
+	    
 	    // Process each collected trade
 	    for (Trade trade : tradesToProcess) {
 	    	// Get the company code associated with the trade
