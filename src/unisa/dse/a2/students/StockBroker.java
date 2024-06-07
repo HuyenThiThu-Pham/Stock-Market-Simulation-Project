@@ -64,6 +64,10 @@ public class StockBroker {
 	 */
 	public boolean placeOrder(Trade order)
 	{
+		if (order == null || pendingTrades.contains(order)) {
+			return false;
+		}
+		return pendingTrades.add(order);
 	}
 	
 	/**
