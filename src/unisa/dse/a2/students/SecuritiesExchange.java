@@ -63,6 +63,11 @@ public class SecuritiesExchange {
 	 */
 	public boolean addBroker(StockBroker broker)
 	{
+		if (broker != null && !brokers.contains(broker)) {
+			brokers.add(broker);
+			return true;
+        }
+		return false;
 	}
 	
 	/**
