@@ -88,7 +88,7 @@ public class SecuritiesExchange {
 	 * @return The number of successful trades completed across all brokers
 	 * @throws UntradedCompanyException when traded company is not listed on this exchange
 	 */
-	public int processTradeRound()
+	public int processTradeRound() throws UntradedCompanyException
 	{
 		int successfulTrades = 0; // Initialize the count of successful trades
 		   
